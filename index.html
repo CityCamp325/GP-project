@@ -38,6 +38,7 @@
     <section>
       <h2>3. Multiple-Choice Questionnaire</h2>
       <p>Choose an answer. </p>
+      <p id="progress-counter">Progress: 0/3 questions answered</p>
       <div class="questionnaire">
         <div class="quiz-question">
           <h3>Question 1</h3><p>Write your question here.</p>
@@ -66,6 +67,11 @@
             <button class="choice" onclick="checkAnswer(this, false)">Choice 4</button>
           </div><p class="feedback"></p>
         </div>
+      </div>
+      <div id="final-result" style="display: none;">
+        <h2>Quiz Complete!</h2>
+        <p id="final-score"></p>
+        <button onclick="restartQuiz()">Restart Quiz</button>
       </div>
     </section>
   </main>
