@@ -111,12 +111,12 @@ h2 { border-left: 6px solid var(--accent); padding-left: .8rem; }
 .correct-feedback { color: var(--correct-border); }
 .wrong-feedback { color: var(--wrong-border); }
 
-.progress-counter {
+#progress-counter {
     font-weight: bold;
     margin: 20px 0;
 }
 
-.final-result {
+#final-result {
     text-align: center;
     margin-top: 30px;
     padding: 20px;
@@ -124,7 +124,7 @@ h2 { border-left: 6px solid var(--accent); padding-left: .8rem; }
     background-color: #e8f5e9;
 }
 
-.final-result button {
+#final-result button {
     padding: 10px 20px;
     cursor: pointer;
 }
