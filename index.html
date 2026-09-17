@@ -7,16 +7,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header>
     <h1>Chinese Medicine Learning Hub</h1>
     <p>Learn, revise, and test your knowledge</p>
   </header>
 
   <main>
-    <section id="learning-material">
+    <section>
       <h2>1. Learning Material</h2>
-
       <div class="instructions">
         <p><strong>Paragraph 1:</strong> Write your first paragraph about Chinese medicine here.</p>
         <p><strong>Paragraph 2:</strong> Write your second paragraph about Chinese medicine here.</p>
@@ -24,147 +22,55 @@
       </div>
     </section>
 
-    <section id="flashcards">
+    <section>
       <h2>2. Flashcards</h2>
       <p>Click a flashcard to reveal the answer.</p>
-
       <div class="flashcard-grid">
-        <div class="flashcard" onclick="flipCard(this)">
-          <div class="flashcard-inner">
-            <div class="flashcard-front"><strong>Flashcard Question 1</strong></div>
-            <div class="flashcard-back"><span>Flashcard Answer 1</span></div>
-          </div>
-        </div>
-
-        <div class="flashcard" onclick="flipCard(this)">
-          <div class="flashcard-inner">
-            <div class="flashcard-front"><strong>Flashcard Question 2</strong></div>
-            <div class="flashcard-back"><span>Flashcard Answer 2</span></div>
-          </div>
-        </div>
-
-        <div class="flashcard" onclick="flipCard(this)">
-          <div class="flashcard-inner">
-            <div class="flashcard-front"><strong>Flashcard Question 3</strong></div>
-            <div class="flashcard-back"><span>Flashcard Answer 3</span></div>
-          </div>
-        </div>
-
-        <div class="flashcard" onclick="flipCard(this)">
-          <div class="flashcard-inner">
-            <div class="flashcard-front"><strong>Flashcard Question 4</strong></div>
-            <div class="flashcard-back"><span>Flashcard Answer 4</span></div>
-          </div>
-        </div>
-
-        <div class="flashcard" onclick="flipCard(this)">
-          <div class="flashcard-inner">
-            <div class="flashcard-front"><strong>Flashcard Question 5</strong></div>
-            <div class="flashcard-back"><span>Flashcard Answer 5</span></div>
-          </div>
-        </div>
-
-        <div class="flashcard" onclick="flipCard(this)">
-          <div class="flashcard-inner">
-            <div class="flashcard-front"><strong>Flashcard Question 6</strong></div>
-            <div class="flashcard-back"><span>Flashcard Answer 6</span></div>
-          </div>
-        </div>
+        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 1</div><div class="flashcard-back">Flashcard Answer 1</div></div></div>
+        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 2</div><div class="flashcard-back">Flashcard Answer 2</div></div></div>
+        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 3</div><div class="flashcard-back">Flashcard Answer 3</div></div></div>
+        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 4</div><div class="flashcard-back">Flashcard Answer 4</div></div></div>
+        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 5</div><div class="flashcard-back">Flashcard Answer 5</div></div></div>
+        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 6</div><div class="flashcard-back">Flashcard Answer 6</div></div></div>
       </div>
     </section>
 
-    <section id="questionnaire">
-      <h2>3. Questionnaire</h2>
-      <p>Answer the questions using the learning material above.</p>
-
+    <section>
+      <h2>3. Multiple-Choice Questionnaire</h2>
+      <p>Choose an answer. Correct answers turn green and incorrect answers turn red.</p>
       <div class="questionnaire">
-        <form id="quiz-form">
-          <div class="question">
-            <label for="q1">Question 1</label>
-            <textarea id="q1" rows="3" placeholder="Write question 1 here..."></textarea>
-          </div>
-
-          <div class="question">
-            <label for="a1">Your Answer</label>
-            <textarea id="a1" rows="3" placeholder="Write your answer here..."></textarea>
-          </div>
-
-          <div class="question">
-            <label for="q2">Question 2</label>
-            <textarea id="q2" rows="3" placeholder="Write question 2 here..."></textarea>
-          </div>
-
-          <div class="question">
-            <label for="a2">Your Answer</label>
-            <textarea id="a2" rows="3" placeholder="Write your answer here..."></textarea>
-          </div>
-
-          <div class="question">
-            <label for="q3">Question 3</label>
-            <textarea id="q3" rows="3" placeholder="Write question 3 here..."></textarea>
-          </div>
-
-          <div class="question">
-            <label for="a3">Your Answer</label>
-            <textarea id="a3" rows="3" placeholder="Write your answer here..."></textarea>
-          </div>
-
-          <div class="button-row">
-            <button type="button" onclick="saveAnswers()">Save Answers Locally</button>
-            <button type="reset" onclick="clearMessage()">Clear Form</button>
-          </div>
-
-          <p id="saved-message"></p>
-        </form>
+        <div class="quiz-question">
+          <h3>Question 1</h3><p>Write your question here.</p>
+          <div class="choices">
+            <button class="choice correct" onclick="checkAnswer(this, true)">Choice 1</button>
+            <button class="choice" onclick="checkAnswer(this, false)">Choice 2</button>
+            <button class="choice" onclick="checkAnswer(this, false)">Choice 3</button>
+            <button class="choice" onclick="checkAnswer(this, false)">Choice 4</button>
+          </div><p class="feedback"></p>
+        </div>
+        <div class="quiz-question">
+          <h3>Question 2</h3><p>Write your question here.</p>
+          <div class="choices">
+            <button class="choice correct" onclick="checkAnswer(this, true)">Choice 1</button>
+            <button class="choice" onclick="checkAnswer(this, false)">Choice 2</button>
+            <button class="choice" onclick="checkAnswer(this, false)">Choice 3</button>
+            <button class="choice" onclick="checkAnswer(this, false)">Choice 4</button>
+          </div><p class="feedback"></p>
+        </div>
+        <div class="quiz-question">
+          <h3>Question 3</h3><p>Write your question here.</p>
+          <div class="choices">
+            <button class="choice correct" onclick="checkAnswer(this, true)">Choice 1</button>
+            <button class="choice" onclick="checkAnswer(this, false)">Choice 2</button>
+            <button class="choice" onclick="checkAnswer(this, false)">Choice 3</button>
+            <button class="choice" onclick="checkAnswer(this, false)">Choice 4</button>
+          </div><p class="feedback"></p>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    Chinese Medicine Learning Hub
-  </footer>
-
-  <script>
-    function flipCard(card) {
-      card.classList.toggle("flipped");
-    }
-
-    function saveAnswers() {
-      const answers = {
-        q1: document.getElementById("q1").value,
-        a1: document.getElementById("a1").value,
-        q2: document.getElementById("q2").value,
-        a2: document.getElementById("a2").value,
-        q3: document.getElementById("q3").value,
-        a3: document.getElementById("a3").value
-      };
-
-      localStorage.setItem("chineseMedicineAnswers", JSON.stringify(answers));
-
-      document.getElementById("saved-message").textContent =
-        "Your answers have been saved in this browser.";
-    }
-
-    function clearMessage() {
-      document.getElementById("saved-message").textContent = "";
-    }
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const saved = localStorage.getItem("chineseMedicineAnswers");
-
-      if (saved) {
-        const answers = JSON.parse(saved);
-
-        Object.keys(answers).forEach((key) => {
-          const field = document.getElementById(key);
-
-          if (field) {
-            field.value = answers[key];
-          }
-        });
-      }
-    });
-  </script>
-
+  <footer>Chinese Medicine Learning Hub</footer>
+  <script src="script.js"></script>
 </body>
 </html>
