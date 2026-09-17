@@ -57,7 +57,7 @@ h2 { border-left: 6px solid var(--accent); padding-left: .8rem; }
   transform-style: preserve-3d;
 }
 
-.flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+.flashcard.flipped .flashcard-inner { transform: rotateY(-180deg); }
 
 .flashcard-front, .flashcard-back {
   position: absolute;
@@ -74,7 +74,7 @@ h2 { border-left: 6px solid var(--accent); padding-left: .8rem; }
 }
 
 .flashcard-front { background: white; border: 2px solid var(--primary); }
-.flashcard-back { background: var(--secondary); border: 2px solid var(--accent); transform: rotateY(180deg); }
+.flashcard-back { background: var(--secondary); border: 2px solid var(--accent); transform: rotateY(-180deg); }
 
 .questionnaire {
   background: white;
