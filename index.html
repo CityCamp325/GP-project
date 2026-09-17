@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chinese Medicine Learning Hub</title>
+
+  <!-- Link to the separate CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <h1>Chinese Medicine Learning Hub</h1>
+    <p>Learn, revise, and test your knowledge</p>
+  </header>
+
+  <main>
+
+    <!-- LEARNING MATERIAL -->
+
+    <section id="learning-material">
+
+      <h2>1. Learning Material</h2>
+
+      <div class="instructions">
+
+        <p>
+          <strong>Paragraph 1:</strong>
+          Write your first paragraph about Chinese medicine here.
+        </p>
+
+        <p>
+          <strong>Paragraph 2:</strong>
+          Write your second paragraph about Chinese medicine here.
+        </p>
+
+        <p>
+          <strong>Paragraph 3:</strong>
+          Write your third paragraph about Chinese medicine here.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- FLASHCARDS -->
+
+    <section id="flashcards">
+
+      <h2>2. Flashcards</h2>
+
+      <p>
+        Click a flashcard to reveal the answer.
+      </p>
+
+      <div class="flashcard-grid">
+
+        <!-- FLASHCARD 1 -->
+
+        <div class="flashcard" onclick="flipCard(this)">
+
+          <div class="flashcard-inner">
+
+            <div class="flashcard-front">
+              <strong>Flashcard Question 1</strong>
+            </div>
+
+            <div class="flashcard-back">
+              <span>Flashcard Answer 1</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FLASHCARD 2 -->
+
+        <div class="flashcard" onclick="flipCard(this)">
+
+          <div class="flashcard-inner">
+
+            <div class="flashcard-front">
+              <strong>Flashcard Question 2</strong>
+            </div>
+
+            <div class="flashcard-back">
+              <span>Flashcard Answer 2</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FLASHCARD 3 -->
+
+        <div class="flashcard" onclick="flipCard(this)">
+
+          <div class="flashcard-inner">
+
+            <div class="flashcard-front">
+              <strong>Flashcard Question 3</strong>
+            </div>
+
+            <div class="flashcard-back">
+              <span>Flashcard Answer 3</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FLASHCARD 4 -->
+
+        <div class="flashcard" onclick="flipCard(this)">
+
+          <div class="flashcard-inner">
+
+            <div class="flashcard-front">
+              <strong>Flashcard Question 4</strong>
+            </div>
+
+            <div class="flashcard-back">
+              <span>Flashcard Answer 4</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FLASHCARD 5 -->
+
+        <div class="flashcard" onclick="flipCard(this)">
+
+          <div class="flashcard-inner">
+
+            <div class="flashcard-front">
+              <strong>Flashcard Question 5</strong>
+            </div>
+
+            <div class="flashcard-back">
+              <span>Flashcard Answer 5</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FLASHCARD 6 -->
+
+        <div class="flashcard" onclick="flipCard(this)">
+
+          <div class="flashcard-inner">
+
+            <div class="flashcard-front">
+              <strong>Flashcard Question 6</strong>
+            </div>
+
+            <div class="flashcard-back">
+              <span>Flashcard Answer 6</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUESTIONNAIRE -->
+
+    <section id="questionnaire">
+
+      <h2>3. Questionnaire</h2>
+
+      <p>
+        Answer the questions using the learning material above.
+      </p>
+
+      <div class="questionnaire">
+
+        <form id="quiz-form">
+
+
+          <!-- QUESTION 1 -->
+
+          <div class="question">
+
+            <label for="q1">
+              Question 1
+            </label>
+
+            <textarea
+              id="q1"
+              rows="3"
+              placeholder="Write question 1 here..."
+            ></textarea>
+
+          </div>
+
+
+          <div class="question">
+
+            <label for="a1">
+              Your Answer
+            </label>
+
+            <textarea
+              id="a1"
+              rows="3"
+              placeholder="Write your answer here..."
+            ></textarea>
+
+          </div>
+
+
+          <!-- QUESTION 2 -->
+
+          <div class="question">
+
+            <label for="q2">
+              Question 2
+            </label>
+
+            <textarea
+              id="q2"
+              rows="3"
+              placeholder="Write question 2 here..."
+            ></textarea>
+
+          </div>
+
+
+          <div class="question">
+
+            <label for="a2">
+              Your Answer
+            </label>
+
+            <textarea
+              id="a2"
+              rows="3"
+              placeholder="Write your answer here..."
+            ></textarea>
+
+          </div>
+
+
+          <!-- QUESTION 3 -->
+
+          <div class="question">
+
+            <label for="q3">
+              Question 3
+            </label>
+
+            <textarea
+              id="q3"
+              rows="3"
+              placeholder="Write question 3 here..."
+            ></textarea>
+
+          </div>
+
+
+          <div class="question">
+
+            <label for="a3">
+              Your Answer
+            </label>
+
+            <textarea
+              id="a3"
+              rows="3"
+              placeholder="Write your answer here..."
+            ></textarea>
+
+          </div>
+
+
+          <!-- BUTTONS -->
+
+          <div class="button-row">
+
+            <button
+              type="button"
+              onclick="saveAnswers()"
+            >
+              Save Answers Locally
+            </button>
+
+            <button
+              type="reset"
+              onclick="clearMessage()"
+            >
+              Clear Form
+            </button>
+
+          </div>
+
+          <p id="saved-message"></p>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    Chinese Medicine Learning Hub
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    // Flip flashcards
+
+    function flipCard(card) {
+
+      card.classList.toggle("flipped");
+
+    }
+
+
+    // Save answers
+
+    function saveAnswers() {
+
+      const answers = {
+
+        q1: document.getElementById("q1").value,
+
+        a1: document.getElementById("a1").value,
+
+        q2: document.getElementById("q2").value,
+
+        a2: document.getElementById("a2").value,
+
+        q3: document.getElementById("q3").value,
+
+        a3: document.getElementById("a3").value
+
+      };
+
+
+      localStorage.setItem(
+        "chineseMedicineAnswers",
+        JSON.stringify(answers)
+      );
+
+
+      document.getElementById(
+        "saved-message"
+      ).textContent =
+        "Your answers have been saved in this browser.";
+
+    }
+
+
+    // Clear saved message
+
+    function clearMessage() {
+
+      document.getElementById(
+        "saved-message"
+      ).textContent = "";
+
+    }
+
+
+    // Load saved answers when page opens
+
+    window.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        const saved = localStorage.getItem(
+          "chineseMedicineAnswers"
+        );
+
+
+        if (saved) {
+
+          const answers = JSON.parse(saved);
+
+
+          Object.keys(answers).forEach(
+            (key) => {
+
+              const field =
+                document.getElementById(key);
+
+
+              if (field) {
+
+                field.value = answers[key];
+
+              }
+
+            }
+          );
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
