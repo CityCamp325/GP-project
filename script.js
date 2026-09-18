@@ -1,12 +1,19 @@
-// Flashcard function
+// ===============================
+// FLASHCARD FUNCTION
+// ===============================
+
 function flipCard(card) {
+    // Flip the card
     card.classList.toggle("flipped");
 
+    // Find the flashcard number
     const cards = document.querySelectorAll(".flashcard");
     const cardNumber = Array.from(cards).indexOf(card) + 1;
 
+    // Check whether the card is open or closed
     const isFlipped = card.classList.contains("flipped");
 
+    // Send event to Google Analytics
     if (typeof gtag === "function") {
         gtag("event", "flashcard_flipped", {
             flashcard_number: cardNumber,
@@ -20,7 +27,10 @@ function flipCard(card) {
 }
 
 
-// Quiz variables
+// ===============================
+// QUIZ VARIABLES
+// ===============================
+
 let score = 0;
 let answeredQuestions = 0;
 
@@ -28,7 +38,10 @@ const totalQuestions =
     document.querySelectorAll(".quiz-question").length;
 
 
-// Check answer
+// ===============================
+// CHECK ANSWER
+// ===============================
+
 function checkAnswer(selectedChoice, isCorrect) {
 
     const question = selectedChoice.closest(".quiz-question");
@@ -51,13 +64,22 @@ function checkAnswer(selectedChoice, isCorrect) {
     const feedback = question.querySelector(".feedback");
 
     if (isCorrect) {
+
         selectedChoice.classList.add("correct-answer");
+
         feedback.textContent = "Correct!";
+        feedback.classList.add("correct-feedback");
+
         score++;
+
     } else {
+
         selectedChoice.classList.add("wrong-answer");
 
-        feedback.textContent = "Incorrect. The correct answer is highlighted.";
+        feedback.textContent =
+            "Incorrect. The correct answer is highlighted.";
+
+        feedback.classList.add("wrong-feedback");
 
         // Highlight correct answer
         const correctChoice = question.querySelector(".correct");
@@ -69,30 +91,44 @@ function checkAnswer(selectedChoice, isCorrect) {
 
     answeredQuestions++;
 
-    // Send question data to Google Analytics
-    if (typeof gtag === "function") {
-        gtag("event", "question_answered", {
-            question_number: question.querySelector("h3").textContent,
-            correct: isCorrect
-        });
-    }
-
     // Update progress counter
     document.getElementById("progress-counter").textContent =
         `Progress: ${answeredQuestions}/${totalQuestions} questions answered`;
 
-    // Show final score
+
+    // Send question event to Google Analytics
+    if (typeof gtag === "function") {
+
+        const questionNumber =
+            question.querySelector("h3").textContent;
+
+        gtag("event", "question_answered", {
+            question_number: questionNumber,
+            correct: isCorrect
+        });
+
+        console.log("Question event sent:", questionNumber);
+    }
+
+
+    // Show final score when all questions are answered
     if (answeredQuestions === totalQuestions) {
         showFinalScore();
     }
 }
 
 
-// Display final score
+// ===============================
+// DISPLAY FINAL SCORE
+// ===============================
+
 function showFinalScore() {
 
-    const finalResult = document.getElementById("final-result");
-    const finalScore = document.getElementById("final-score");
+    const finalResult =
+        document.getElementById("final-result");
+
+    const finalScore =
+        document.getElementById("final-score");
 
     finalScore.textContent =
         `Your score: ${score}/${totalQuestions}`;
@@ -101,13 +137,16 @@ function showFinalScore() {
 }
 
 
-// Restart quiz
+// ===============================
+// RESTART QUIZ
+// ===============================
+
 function restartQuiz() {
 
     score = 0;
     answeredQuestions = 0;
 
-    // Reset progress
+    // Reset progress counter
     document.getElementById("progress-counter").textContent =
         `Progress: 0/${totalQuestions} questions answered`;
 
@@ -115,23 +154,37 @@ function restartQuiz() {
     document.getElementById("final-result").style.display = "none";
 
     // Reset all questions
-    const questions = document.querySelectorAll(".quiz-question");
+    const questions =
+        document.querySelectorAll(".quiz-question");
 
     questions.forEach(question => {
 
         question.dataset.answered = "false";
 
-        const choices = question.querySelectorAll(".choice");
+        const choices =
+            question.querySelectorAll(".choice");
 
         choices.forEach(choice => {
+
             choice.disabled = false;
-            choice.classList.remove("correct-answer", "wrong-answer");
+
+            choice.classList.remove(
+                "correct-answer",
+                "wrong-answer"
+            );
         });
 
-        const feedback = question.querySelector(".feedback");
+        const feedback =
+            question.querySelector(".feedback");
 
         if (feedback) {
+
             feedback.textContent = "";
+
+            feedback.classList.remove(
+                "correct-feedback",
+                "wrong-feedback"
+            );
         }
     });
 }
