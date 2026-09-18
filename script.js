@@ -53,6 +53,14 @@ function checkAnswer(selectedChoice, isCorrect) {
 
     answeredQuestions++;
 
+    // Send question data to Google Analytics
+    if (typeof gtag === "function") {
+        gtag("event", "question_answered", {
+            question_number: question.querySelector("h3").textContent,
+            correct: isCorrect
+        });
+    }
+
     // Update progress counter
     document.getElementById("progress-counter").textContent =
         `Progress: ${answeredQuestions}/${totalQuestions} questions answered`;
