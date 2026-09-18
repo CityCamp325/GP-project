@@ -1,21 +1,21 @@
 // Flashcard function
 function flipCard(card) {
-    // Flip the card
     card.classList.toggle("flipped");
 
-    // Find the flashcard number
     const cards = document.querySelectorAll(".flashcard");
     const cardNumber = Array.from(cards).indexOf(card) + 1;
 
-    // Check whether the card is now flipped
     const isFlipped = card.classList.contains("flipped");
 
-    // Send event to Google Analytics
     if (typeof gtag === "function") {
         gtag("event", "flashcard_flipped", {
             flashcard_number: cardNumber,
             action: isFlipped ? "flipped_open" : "flipped_closed"
         });
+
+        console.log("Flashcard event sent:", cardNumber);
+    } else {
+        console.log("Google Analytics is not loaded.");
     }
 }
 
