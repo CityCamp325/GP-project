@@ -20,7 +20,7 @@ body {
   line-height: 1.6;
 }
 
-header {
+/* header {
     padding: 5rem 1rem;
     text-align: center;
 
@@ -28,6 +28,15 @@ header {
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
         url("images/header.jpg");
 
+    background-size: cover;
+    background-position: center;
+    color: white;
+} */
+
+header {
+    padding: 5rem 1rem;
+    text-align: center;
+    background-image: url("./images/header.jpg");
     background-size: cover;
     background-position: center;
     color: white;
