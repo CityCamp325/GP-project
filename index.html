@@ -1,30 +1,36 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XFRQ6CLED3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    gtag('config', 'G-XFRQ6CLED3');
-  </script>
-  <!-- Google tag (gtag.js) -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chinese Medicine Learning Hub</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Analytics -->
+  <!-- Keep your existing Google Analytics code here -->
 </head>
+
 <body>
+
   <header>
-    <h1>Chinese Medicine Learning Hub</h1>
-    <p>Learn, revise, and test your knowledge</p>
+    <div class="header-content">
+      <p class="eyebrow">TRADITIONAL MEDICINE • CULTURE • LEARNING</p>
+      <h1>Chinese Medicine Learning Hub</h1>
+      <p>Discover, learn, and explore traditional medicine through research and local knowledge.</p>
+      <a href="#learning-material" class="header-button">Start Exploring ↓</a>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2>1. Learning Material</h2>
+
+    <!-- Learning Material -->
+    <section id="learning-material">
+      <p class="section-number">01 — LEARN</p>
+      <h2>Learning Material</h2>
+
       <div class="instructions">
         <p><strong>Paragraph 1:</strong> Write your first paragraph about Chinese medicine here.</p>
         <p><strong>Paragraph 2:</strong> Write your second paragraph about Chinese medicine here.</p>
@@ -32,61 +38,295 @@
       </div>
     </section>
 
-    <section>
-      <h2>2. Flashcards</h2>
-      <p>Click a flashcard to reveal the answer.</p>
+
+    <!-- Flashcards -->
+    <section id="flashcards">
+      <p class="section-number">02 — PRACTISE</p>
+      <h2>Flashcards</h2>
+      <p class="section-intro">
+        Click a card to reveal the answer.
+      </p>
+
       <div class="flashcard-grid">
-        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 1</div><div class="flashcard-back">Flashcard Answer 1</div></div></div>
-        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 2</div><div class="flashcard-back">Flashcard Answer 2</div></div></div>
-        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 3</div><div class="flashcard-back">Flashcard Answer 3</div></div></div>
-        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 4</div><div class="flashcard-back">Flashcard Answer 4</div></div></div>
-        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 5</div><div class="flashcard-back">Flashcard Answer 5</div></div></div>
-        <div class="flashcard" onclick="flipCard(this)"><div class="flashcard-inner"><div class="flashcard-front">Flashcard Question 6</div><div class="flashcard-back">Flashcard Answer 6</div></div></div>
+
+        <div class="flashcard" onclick="flipCard(this)">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <strong>Flashcard Question 1</strong>
+            </div>
+            <div class="flashcard-back">
+              <span>Flashcard Answer 1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard" onclick="flipCard(this)">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <strong>Flashcard Question 2</strong>
+            </div>
+            <div class="flashcard-back">
+              <span>Flashcard Answer 2</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard" onclick="flipCard(this)">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <strong>Flashcard Question 3</strong>
+            </div>
+            <div class="flashcard-back">
+              <span>Flashcard Answer 3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard" onclick="flipCard(this)">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <strong>Flashcard Question 4</strong>
+            </div>
+            <div class="flashcard-back">
+              <span>Flashcard Answer 4</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard" onclick="flipCard(this)">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <strong>Flashcard Question 5</strong>
+            </div>
+            <div class="flashcard-back">
+              <span>Flashcard Answer 5</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flashcard" onclick="flipCard(this)">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <strong>Flashcard Question 6</strong>
+            </div>
+            <div class="flashcard-back">
+              <span>Flashcard Answer 6</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <section>
-      <h2>3. Multiple-Choice Questionnaire</h2>
-      <p>Choose an answer. </p>
-      <p id="progress-counter">Progress: 0/3 questions answered</p>
-      <div class="questionnaire">
-        <div class="quiz-question">
-          <h3>Question 1</h3><p>Write your question here.</p>
-          <div class="choices">
-            <button class="choice correct" onclick="checkAnswer(this, true)">Choice 1</button>
-            <button class="choice" onclick="checkAnswer(this, false)">Choice 2</button>
-            <button class="choice" onclick="checkAnswer(this, false)">Choice 3</button>
-            <button class="choice" onclick="checkAnswer(this, false)">Choice 4</button>
-          </div><p class="feedback"></p>
-        </div>
-        <div class="quiz-question">
-          <h3>Question 2</h3><p>Write your question here.</p>
-          <div class="choices">
-            <button class="choice correct" onclick="checkAnswer(this, true)">Choice 1</button>
-            <button class="choice" onclick="checkAnswer(this, false)">Choice 2</button>
-            <button class="choice" onclick="checkAnswer(this, false)">Choice 3</button>
-            <button class="choice" onclick="checkAnswer(this, false)">Choice 4</button>
-          </div><p class="feedback"></p>
-        </div>
-        <div class="quiz-question">
-          <h3>Question 3</h3><p>Write your question here.</p>
-          <div class="choices">
-            <button class="choice correct" onclick="checkAnswer(this, true)">Choice 1</button>
-            <button class="choice" onclick="checkAnswer(this, false)">Choice 2</button>
-            <button class="choice" onclick="checkAnswer(this, false)">Choice 3</button>
-            <button class="choice" onclick="checkAnswer(this, false)">Choice 4</button>
-          </div><p class="feedback"></p>
-        </div>
+
+    <!-- Medicine Store Information -->
+    <section id="medicine-stores">
+
+      <p class="section-number">03 — DISCOVER</p>
+      <h2>Local Medicine Stores</h2>
+
+      <p class="section-intro">
+        Explore local medicine stores and learn about the people who preserve traditional medical knowledge.
+      </p>
+
+      <div class="store-grid">
+
+        <!-- Store Card 1 -->
+        <article class="store-card">
+
+          <div class="store-top">
+            <span class="store-tag">MEDICINE STORE</span>
+            <span class="store-icon">🌿</span>
+          </div>
+
+          <h3>Zhaoxing Medicine Store</h3>
+
+          <p class="store-description">
+            A local medicine store in Zhaoxing. Add your fieldwork observations and information about the store here.
+          </p>
+
+          <div class="store-details">
+
+            <div class="detail-item">
+              <span class="detail-icon">👤</span>
+              <div>
+                <span class="detail-label">Store Owner</span>
+                <strong>YOUR OWNER'S NAME</strong>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-icon">📞</span>
+              <div>
+                <span class="detail-label">Phone Number</span>
+                <strong>YOUR PHONE NUMBER</strong>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-icon">📍</span>
+              <div>
+                <span class="detail-label">Address</span>
+                <strong>YOUR STORE ADDRESS</strong>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="store-bottom">
+
+            <button class="like-button" onclick="likeStore('zhaoxing-store', this)">
+              <span class="thumb">👍</span>
+              <span>Like Store</span>
+            </button>
+
+            <span class="like-count">
+              ❤️ <span id="likes-zhaoxing-store">0</span> likes
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- Store Card 2: Duplicate this card for another store -->
+        <article class="store-card">
+
+          <div class="store-top">
+            <span class="store-tag">MEDICINE STORE</span>
+            <span class="store-icon">🌱</span>
+          </div>
+
+          <h3>Another Local Store</h3>
+
+          <p class="store-description">
+            Add information about another medicine store you visited.
+          </p>
+
+          <div class="store-details">
+
+            <div class="detail-item">
+              <span class="detail-icon">👤</span>
+              <div>
+                <span class="detail-label">Store Owner</span>
+                <strong>OWNER'S NAME</strong>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-icon">📞</span>
+              <div>
+                <span class="detail-label">Phone Number</span>
+                <strong>PHONE NUMBER</strong>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-icon">📍</span>
+              <div>
+                <span class="detail-label">Address</span>
+                <strong>STORE ADDRESS</strong>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="store-bottom">
+
+            <button class="like-button" onclick="likeStore('local-store-2', this)">
+              <span class="thumb">👍</span>
+              <span>Like Store</span>
+            </button>
+
+            <span class="like-count">
+              ❤️ <span id="likes-local-store-2">0</span> likes
+            </span>
+
+          </div>
+
+        </article>
+
       </div>
-      <div id="final-result" style="display: none;">
-        <h2>Quiz Complete!</h2>
-        <p id="final-score"></p>
-        <button onclick="restartQuiz()">Restart Quiz</button>
-      </div>
+
+      <p class="privacy-note">
+        Please share personal contact details only with the owner's permission.
+      </p>
+
     </section>
+
+
+    <!-- Questionnaire -->
+    <section id="questionnaire">
+
+      <p class="section-number">04 — TEST YOURSELF</p>
+      <h2>Questionnaire</h2>
+
+      <p class="section-intro">
+        Answer the questions using the information in the learning material above.
+      </p>
+
+      <div class="questionnaire">
+
+        <form id="quiz-form">
+
+          <div class="question">
+            <label for="q1">Question 1</label>
+            <textarea id="q1" rows="3" placeholder="Write question 1 here..."></textarea>
+          </div>
+
+          <div class="question">
+            <label for="a1">Your answer</label>
+            <textarea id="a1" rows="3" placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="question">
+            <label for="q2">Question 2</label>
+            <textarea id="q2" rows="3" placeholder="Write question 2 here..."></textarea>
+          </div>
+
+          <div class="question">
+            <label for="a2">Your answer</label>
+            <textarea id="a2" rows="3" placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="question">
+            <label for="q3">Question 3</label>
+            <textarea id="q3" rows="3" placeholder="Write question 3 here..."></textarea>
+          </div>
+
+          <div class="question">
+            <label for="a3">Your answer</label>
+            <textarea id="a3" rows="3" placeholder="Write your answer here..."></textarea>
+          </div>
+
+          <div class="button-row">
+            <button type="button" onclick="saveAnswers()">
+              Save Answers Locally
+            </button>
+
+            <button type="reset" class="secondary-button" onclick="clearMessage()">
+              Clear Form
+            </button>
+          </div>
+
+          <p id="saved-message"></p>
+
+        </form>
+
+      </div>
+
+    </section>
+
   </main>
 
-  <footer>Chinese Medicine Learning Hub</footer>
+
+  <footer>
+    <p>Chinese Medicine Learning Hub</p>
+    <span>Learn • Discover • Preserve</span>
+  </footer>
+
+
   <script src="script.js"></script>
+
 </body>
 </html>
