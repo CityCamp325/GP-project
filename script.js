@@ -1,231 +1,113 @@
-
-// ========================================
-// FLASHCARDS
-// ========================================
-
+// Flashcard function
 function flipCard(card) {
-  card.classList.toggle("flipped");
-
-  // Google Analytics: flashcard flip event
-  if (typeof gtag === "function") {
-    gtag("event", "flashcard_flip", {
-      event_category: "engagement",
-      event_label: "Flashcard flipped"
-    });
-
-    console.log("Flashcard event sent: 1");
-  }
+    card.classList.toggle("flipped");
 }
 
 
-// ========================================
-// MEDICINE STORE LIKES
-// ========================================
+// Quiz variables
+let score = 0;
+let answeredQuestions = 0;
 
-function likeStore(storeId, button) {
+const totalQuestions =
+    document.querySelectorAll(".quiz-question").length;
 
-  const storageKey = "medicineStoreLikes_" + storeId;
-  const likedKey = "medicineStoreLiked_" + storeId;
 
-  let likes = Number(localStorage.getItem(storageKey)) || 0;
-  let alreadyLiked = localStorage.getItem(likedKey) === "true";
+// Check answer
+function checkAnswer(selectedChoice, isCorrect) {
 
-  if (alreadyLiked) {
+    const question = selectedChoice.closest(".quiz-question");
 
-    likes = Math.max(0, likes - 1);
-
-    localStorage.setItem(storageKey, likes);
-    localStorage.setItem(likedKey, "false");
-
-    button.classList.remove("liked");
-    button.querySelector("span:last-child").textContent = "Like Store";
-
-  } else {
-
-    likes += 1;
-
-    localStorage.setItem(storageKey, likes);
-    localStorage.setItem(likedKey, "true");
-
-    button.classList.add("liked");
-    button.querySelector("span:last-child").textContent = "Liked ✓";
-
-    // Google Analytics: store like event
-    if (typeof gtag === "function") {
-      gtag("event", "store_like", {
-        event_category: "engagement",
-        event_label: storeId
-      });
-
-      console.log("Store like event sent:", storeId);
+    // Prevent answering the same question twice
+    if (question.dataset.answered === "true") {
+        return;
     }
 
-  }
+    question.dataset.answered = "true";
 
-  updateLikeCount(storeId, likes);
-}
+    // Disable all buttons in this question
+    const choices = question.querySelectorAll(".choice");
 
-
-// ========================================
-// UPDATE LIKE COUNT
-// ========================================
-
-function updateLikeCount(storeId, likes) {
-
-  const countElement = document.getElementById("likes-" + storeId);
-
-  if (countElement) {
-    countElement.textContent = likes;
-  }
-
-}
-
-
-// ========================================
-// LOAD STORE LIKES
-// ========================================
-
-function loadStoreLikes() {
-
-  const storeIds = [
-    "zhaoxing-store",
-    "local-store-2"
-  ];
-
-  storeIds.forEach(function(storeId) {
-
-    const storageKey = "medicineStoreLikes_" + storeId;
-    const likedKey = "medicineStoreLiked_" + storeId;
-
-    const likes = Number(localStorage.getItem(storageKey)) || 0;
-    const alreadyLiked = localStorage.getItem(likedKey) === "true";
-
-    updateLikeCount(storeId, likes);
-
-    const buttons = document.querySelectorAll(".like-button");
-
-    buttons.forEach(function(button) {
-
-      const onclickValue = button.getAttribute("onclick") || "";
-
-      if (onclickValue.includes("'" + storeId + "'")) {
-
-        if (alreadyLiked) {
-          button.classList.add("liked");
-          button.querySelector("span:last-child").textContent = "Liked ✓";
-        }
-
-      }
-
+    choices.forEach(choice => {
+        choice.disabled = true;
     });
 
-  });
+    // Find feedback paragraph
+    const feedback = question.querySelector(".feedback");
 
-}
+    if (isCorrect) {
+        selectedChoice.classList.add("correct-answer");
+        feedback.textContent = "Correct!";
+        score++;
+    } else {
+        selectedChoice.classList.add("wrong-answer");
 
+        feedback.textContent = "Incorrect. The correct answer is highlighted.";
 
-// ========================================
-// SAVE QUESTIONNAIRE ANSWERS
-// ========================================
+        // Highlight correct answer
+        const correctChoice = question.querySelector(".correct");
 
-function saveAnswers() {
-
-  const answers = {
-
-    q1: document.getElementById("q1").value,
-    a1: document.getElementById("a1").value,
-
-    q2: document.getElementById("q2").value,
-    a2: document.getElementById("a2").value,
-
-    q3: document.getElementById("q3").value,
-    a3: document.getElementById("a3").value
-
-  };
-
-  localStorage.setItem(
-    "chineseMedicineAnswers",
-    JSON.stringify(answers)
-  );
-
-  document.getElementById("saved-message").textContent =
-    "Your answers have been saved in this browser.";
-
-}
-
-
-// ========================================
-// CLEAR MESSAGE
-// ========================================
-
-function clearMessage() {
-
-  document.getElementById("saved-message").textContent = "";
-
-}
-
-
-// ========================================
-// LOAD SAVED ANSWERS
-// ========================================
-
-function loadSavedAnswers() {
-
-  const saved = localStorage.getItem("chineseMedicineAnswers");
-
-  if (saved) {
-
-    try {
-
-      const answers = JSON.parse(saved);
-
-      Object.keys(answers).forEach(function(key) {
-
-        const field = document.getElementById(key);
-
-        if (field) {
-          field.value = answers[key];
+        if (correctChoice) {
+            correctChoice.classList.add("correct-answer");
         }
-
-      });
-
-    } catch (error) {
-
-      console.error("Could not load saved answers:", error);
-
     }
 
-  }
+    answeredQuestions++;
 
+    // Update progress counter
+    document.getElementById("progress-counter").textContent =
+        `Progress: ${answeredQuestions}/${totalQuestions} questions answered`;
+
+    // Show final score
+    if (answeredQuestions === totalQuestions) {
+        showFinalScore();
+    }
 }
 
 
-// ========================================
-// GOOGLE ANALYTICS: QUESTIONNAIRE SAVE
-// ========================================
+// Display final score
+function showFinalScore() {
 
-function trackAnswerSave() {
+    const finalResult = document.getElementById("final-result");
+    const finalScore = document.getElementById("final-score");
 
-  if (typeof gtag === "function") {
+    finalScore.textContent =
+        `Your score: ${score}/${totalQuestions}`;
 
-    gtag("event", "questionnaire_save", {
-      event_category: "engagement",
-      event_label: "Answers saved"
+    finalResult.style.display = "block";
+}
+
+
+// Restart quiz
+function restartQuiz() {
+
+    score = 0;
+    answeredQuestions = 0;
+
+    // Reset progress
+    document.getElementById("progress-counter").textContent =
+        `Progress: 0/${totalQuestions} questions answered`;
+
+    // Hide final result
+    document.getElementById("final-result").style.display = "none";
+
+    // Reset all questions
+    const questions = document.querySelectorAll(".quiz-question");
+
+    questions.forEach(question => {
+
+        question.dataset.answered = "false";
+
+        const choices = question.querySelectorAll(".choice");
+
+        choices.forEach(choice => {
+            choice.disabled = false;
+            choice.classList.remove("correct-answer", "wrong-answer");
+        });
+
+        const feedback = question.querySelector(".feedback");
+
+        if (feedback) {
+            feedback.textContent = "";
+        }
     });
-
-  }
-
 }
-
-
-// ========================================
-// INITIALISE WEBSITE
-// ========================================
-
-window.addEventListener("DOMContentLoaded", function() {
-
-  loadSavedAnswers();
-
-  loadStoreLikes();
-
-});
